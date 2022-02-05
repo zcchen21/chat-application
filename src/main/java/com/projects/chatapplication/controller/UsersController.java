@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.projects.chatapplication.storage.UserStorage;
+import com.projects.chatapplication.storage.JDBC;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,7 +18,7 @@ public class UsersController {
     public ResponseEntity<Void> register(@PathVariable String username) {
         System.out.println("handling register user request: " + username);
         try {
-            UserStorage.getInstance().addUser(username);
+            JDBC.getInstance().addUser(username);
         } catch (Exception e) {
             System.out.println("registration failed");
             return ResponseEntity.badRequest().build();
@@ -32,11 +32,16 @@ public class UsersController {
     @GetMapping("/searchUser/{username}")
     public ResponseEntity<Void> searchUser(@PathVariable String username) {
         System.out.println("Looking for user: " + username);
-        if (UserStorage.getInstance().getUsers().contains(username)) {
-            System.out.println(username + " exists!");
-            return ResponseEntity.ok().build();
+        try {
+            if (JDBC.getInstance().userExists(username)) {
+                System.out.println(username + " exists!");
+            } else {
+                System.out.println(username + " does not exist!");
+                return ResponseEntity.badRequest().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
         }
-        System.out.println(username + " does not exist!");
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().build();
     }
 }
