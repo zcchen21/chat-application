@@ -5,7 +5,7 @@ body {
     position: relative;
 }
 
-#signin-page {
+#signin-page, #signup-page, #start-page {
     background-color: lightgray;
     width: 100%;
     max-width: 450px;
@@ -14,7 +14,11 @@ body {
     padding: 50px 60px;
 }
 
-#welcome-form input {
+.signin-btn, .signup-btn {
+    margin-top: 15px;
+}
+
+#signup-form input, #signin-form input {
     height: 45px;
     margin-top: 10px;
     margin-bottom: 15px;

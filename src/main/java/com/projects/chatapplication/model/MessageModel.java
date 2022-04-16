@@ -23,9 +23,6 @@ public class MessageModel {
 
     @Override
     public String toString() {
-        return "MessageModel{" +
-                "content='" + content + '\'' +
-                ", sender='" + sender + '\'' +
-                '}';
+        return "MessageModel { " + "content: '" + content + '\'' + ", sender = '" + sender + '\'' + '}';
     }
 }

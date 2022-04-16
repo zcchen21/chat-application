@@ -12,12 +12,30 @@
     </head>
 
     <body>
-        <div id="signin-page">
-            <form id="welcome-form">
-                <h1 class="title">Sign in with your name</h1>
-                <input type="text" id="username" placeholder="name" class="form-control">
+        <div id="start-page">
+            <h1 class="title">Welcome!</h1>
+            <button class="w-100 btn btn-primary btn-lg signin-btn">Sign in</button>
+            <button class="w-100 btn btn-secondary btn-lg signup-btn">Create account</button>
+        </div>
+
+        <div id="signin-page" class="hidden">
+            <form id="signin-form">
+                <h1 class="title">Sign in</h1>
+                <input type="text" id="username" placeholder="username" class="form-control">
+                <input type="password" id="password" placeholder="password" class="form-control">
                 <button type="submit" class="w-100 btn btn-primary btn-lg">Sign in</button>
             </form>
+            <button class="w-100 btn btn-secondary signup-btn">Don't have an account? Sign up</button>
+        </div>
+
+        <div id="signup-page" class="hidden">
+            <form id="signup-form">
+                <h1 class="title">Sign up</h1>
+                <input type="text" id="signup-username" placeholder="username" class="form-control">
+                <input type="password" id="signup-password" placeholder="password" class="form-control">
+                <button type="submit" class="w-100 btn btn-primary btn-lg">Sign up</button>
+            </form>
+            <button class="w-100 btn btn-secondary signin-btn">Already have an account? Sign in</button>
         </div>
 
         <div id="dialogue-page" class="hidden">
